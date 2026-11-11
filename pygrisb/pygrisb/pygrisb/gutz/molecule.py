@@ -118,7 +118,7 @@ class cell_point_groups_analyzer:
         molecule_positions = numpy.empty((n,3))
         molecule_symbols = numpy.empty(n, dtype='<U2')
         pair_dist = numpy.empty(n)
-        eq_indices = numpy.empty(n, dtype=numpy.int)
+        eq_indices = numpy.empty(n, dtype=int)
         ii = 0
         for i, j, k in itertools.product(range(-nmax, nmax), repeat=3):
             for jat, sp in enumerate(scaled_positions):

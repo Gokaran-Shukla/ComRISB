@@ -21,7 +21,7 @@ class group:
     def set_product_table(self, tol=1.e-5):
         u_list = np.asarray(self.u_list)
         h = u_list.shape[0]
-        table = np.zeros((h, h), dtype=np.int)
+        table = np.zeros((h, h), dtype=int)
         # there may be duplicated representations.
         # but the duplications should be the same.
         deg = 0
@@ -242,7 +242,7 @@ class point_group_3d(rotation_group_3d):
         for 32 point groups in crystalline, only one non-rotation
         (inversion or rotoreflection) generator is needed.
         '''
-        inversion_op = -np.eye(3, dtype=np.int)
+        inversion_op = -np.eye(3, dtype=int)
         u_list = []
         non_rotation_generator_type = 0
         # sort out rotations

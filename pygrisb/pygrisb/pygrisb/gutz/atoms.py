@@ -213,9 +213,9 @@ class cor_structure(structure):
             if imap == i:
                 na = na2//2
                 # two identical spin-block.
-                csh2sab2 = np.zeros((na2,na2), dtype=np.complex)
+                csh2sab2 = np.zeros((na2,na2), dtype=complex)
                 csh2sab2[:na,::2] = csh2sab2[na:,1::2] = csh2sab
-                symbol_matrix2 = np.zeros((na2,na2), dtype=np.int)
+                symbol_matrix2 = np.zeros((na2,na2), dtype=int)
                 symbol_matrix2[::2,::2] = symbol_matrix
                 if self.ps["ispin"] == 1:
                     symbol_matrix2[1::2,1::2] = symbol_matrix
@@ -240,10 +240,10 @@ class cor_structure(structure):
                     "need to run set_full_symm_adaptive_basis first!"
             if realhemb:
                 smb = mb.dense_matrix_basis(symbol_matrix=symbol_matrix,
-                        dtype=np.float, btype='general')
+                        dtype=float, btype='general')
                 matrix_basis_r_list.append(smb.basis)
                 smb = mb.dense_matrix_basis(symbol_matrix=symbol_matrix,
-                        dtype=np.float)
+                        dtype=float)
             else:
                 smb = mb.dense_matrix_basis(symbol_matrix=symbol_matrix)
             matrix_basis_list.append(smb.basis)
@@ -500,6 +500,7 @@ def read_cif(cif_file):
     from pymatgen.core import Structure
     struct = Structure.from_file(cif_file, primitive=True)
     import pymatgen.symmetry as symmetry
+    import pymatgen.symmetry.analyzer  # explicit submodule import (current pymatgen)
     struct = symmetry.analyzer.SpacegroupAnalyzer( \
             struct).get_primitive_standard_structure()
     from  pymatgen.io.ase import AseAtomsAdaptor
@@ -540,7 +541,7 @@ def cleanup_imap_list(imap_list):
     in the struct file.
     '''
     imax = np.max(imap_list)+1
-    index_map = np.zeros(imax, dtype=np.int)-1
+    index_map = np.zeros(imax, dtype=int)-1
     for i in range(imax):
         if i in imap_list:
             index_map[i] = imap_list.index(i)

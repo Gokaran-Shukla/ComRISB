@@ -1,7 +1,6 @@
 import numpy as np
 import h5py
 from pygrisb.estructure import dos as _dos
-from future_builtins import zip
 
 
 with h5py.File('GBANDS_0.h5', 'r') as f:

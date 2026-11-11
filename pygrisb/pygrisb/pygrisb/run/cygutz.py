@@ -17,7 +17,7 @@ def get_cygtail():
     if os.path.isfile("GParam.h5"):
         with h5open("GParam.h5", "r") as f:
             val = f["/impurity_0/V2E"][0,0,0,0]
-            if val.dtype == np.float:
+            if val.dtype == float:
                 cygtail = "R"
     return cygtail
 
@@ -281,6 +281,23 @@ def simplemixing(
 
 
 
+def _fd_jacobian_factory(fun, args, eps):
+    """Forward-difference Jacobian with step h_j = sqrt(eps)*max(|x_j|, 1)."""
+    seps = np.sqrt(eps)
+    def jac(x, args_=None):
+        a = args if args_ is None else args_
+        x = np.asarray(x, dtype=float)
+        f0 = np.asarray(fun(x, args=a))
+        jmat = np.empty((len(f0), len(x)))
+        for j in range(len(x)):
+            h = seps*max(abs(x[j]), 1.0)
+            xp = x.copy()
+            xp[j] += h
+            jmat[:, j] = (np.asarray(fun(xp, args=a)) - f0)/h
+        return jmat
+    return jac
+
+
 def gsolve_nleqns(
         fun,
         method="hybr",
@@ -317,9 +334,20 @@ def gsolve_nleqns(
                 method = "hybr"
                 args["edinit"] = 0
 
-            options = conf.get(method, options_dict.get(method, {}))
+            options = dict(conf.get(method, options_dict.get(method, {})))
             if len(options) > 0:
                 print("min-options:", options)
+
+            # MINPACK's internal finite-difference step is purely relative,
+            # h_j = sqrt(eps)*|x_j|.  Parameters that sit at ~1e-17 (e.g. the
+            # particle-hole-symmetric zeros of a converged U=0 solution used as
+            # the starting point of an adiabatic U scan) then get h_j ~ 1e-20,
+            # their Jacobian columns are noise and the solver jumps to an
+            # unphysical point.  Use an explicit forward-difference Jacobian with
+            # an absolute floor instead: h_j = sqrt(eps)*max(|x_j|, 1).
+            if method in ("hybr", "lm") and not callable(jac) and not jac:
+                eps_fd = options.pop("eps", 1.e-6)
+                jac = _fd_jacobian_factory(fun, args, eps_fd)
 
             res = optimize.root(
                     fun,

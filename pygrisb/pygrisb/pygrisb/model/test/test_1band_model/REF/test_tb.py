@@ -24,13 +24,13 @@ num_e = 1.0
 num_band_max = 1
 
 # GPARAMBANDS.h5
-h1e_list = [np.array([[0, 0], [0, 0]], dtype=np.complex)]
+h1e_list = [np.array([[0, 0], [0, 0]], dtype=complex)]
 ginput.save_gparambands(kps_wt, num_e, num_band_max, h1e_list=h1e_list)
 
 sigma_list = [np.identity(2, dtype=np.int32)]
-v2e = np.zeros((2, 2, 2, 2), dtype=np.complex)
+v2e = np.zeros((2, 2, 2, 2), dtype=complex)
 v2e[0, 0, 0, 0] = v2e[0, 0, 1, 1] = v2e[1, 1, 0, 0] = v2e[1, 1, 1, 1] = 6.0
-sz = np.asarray(np.diag((1,-1)),dtype=np.complex)
+sz = np.asarray(np.diag((1,-1)),dtype=complex)
 
 # GPARAM.h5
 ginput.save_gparam(sigma_list=sigma_list, iembeddiag=-1, v2e_list=[v2e],

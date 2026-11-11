@@ -76,7 +76,7 @@ def gutz_model_setup(u=0.0, spindeg=True, num_e=2., iembeddiag=-2):
     num_band_max = 2
 
     # set list of one-body part of the local Hamiltonian (trivial here.)
-    h1e_list = [np.array([[0,]], dtype=np.complex) for symbol in symbols]
+    h1e_list = [np.array([[0,]], dtype=complex) for symbol in symbols]
 
     # create ``GBareH.h5`` file
     gbndinfo = gp.gparam_bnds(kps_wt, num_e, num_band_max, h1e_list=h1e_list)
@@ -91,10 +91,10 @@ def gutz_model_setup(u=0.0, spindeg=True, num_e=2., iembeddiag=-2):
             "na2_list": [2,2],
             "iso": 1,
             "ispin": ispin,
-            "db2sab_list": [np.eye(1, dtype=np.complex), \
-                    np.eye(1, dtype=np.complex)],
-            "symbol_matrix_list": [np.eye(1, dtype=np.int), \
-                    np.eye(1, dtype=np.int)],
+            "db2sab_list": [np.eye(1, dtype=complex), \
+                    np.eye(1, dtype=complex)],
+            "symbol_matrix_list": [np.eye(1, dtype=int), \
+                    np.eye(1, dtype=int)],
             "dc_u_avg_list": [0., 0.],
             "dc_j_avg_list": [0., 0.],
             "giembeddiag": iembeddiag,

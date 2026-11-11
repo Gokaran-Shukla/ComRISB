@@ -11,7 +11,7 @@ env:
 		COMRISB_BIN=${PWD}/bin; \
 	fi
 com_wannier90:  	
-	cd wannier90_2.1 && $(MAKE) all && cd ..
+	cd wannier90_3.1.0 && $(MAKE) lib && cd ..
 com_comgw:
 	cd gw && $(MAKE) && cd ..
 com_comwann:
@@ -29,6 +29,6 @@ clean_comgw:
 clean_comwann:
 	cd ComWann && $(MAKE) clean && cd ..
 clean_wannier90:  	
-	cd wannier90_2.1 && $(MAKE) clean && cd ..
+	cd wannier90_3.1.0 && $(MAKE) clean && cd ..
 clean_bin:
 	rm -rf ./bin/*

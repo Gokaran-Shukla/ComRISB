@@ -172,7 +172,7 @@ class TB(object):
                 if R not in self.Hr:  # the matrix for R is not set yet
                     self.Hr[R] = numpy.zeros((
                             self.Atoms.nspinorbitals,
-                            self.Atoms.nspinorbitals), dtype=numpy.complex)
+                            self.Atoms.nspinorbitals), dtype=complex)
                 self.Hr[R][iorb, jorb] = t_hop
             else:
                 R, hr = ihop
@@ -202,7 +202,7 @@ class TB(object):
         if self.Hr is not None:
             reciprocalvector = self.Atoms.get_reciprocal_cell()
             self.hk = numpy.zeros((self.Atoms.nspinorbitals, \
-                    self.Atoms.nspinorbitals), dtype=numpy.complex)
+                    self.Atoms.nspinorbitals), dtype=complex)
             ikcart = numpy.dot(kpt, reciprocalvector)
             for ir in self.Hr:
                 R = numpy.array(ir)
@@ -320,7 +320,7 @@ class TB(object):
             filename = "dos.dat"
         else:
             filename = saveto
-        dos = numpy.zeros(len(dos_mesh), dtype=numpy.float)
+        dos = numpy.zeros(len(dos_mesh), dtype=float)
         for ek in numpy.nditer(eks):
             dos += numpy.exp(-(ek - dos_mesh)**2 / 2.0 / eta**2)
         dos *= 1.0 / numpy.sqrt(2 * numpy.pi) / eta
@@ -364,9 +364,9 @@ class TB(object):
     def save_bareham(self, kpts):
         numk = len(kpts)
         norbs = self.Atoms.nspinorbitals
-        ek_list = numpy.zeros((numk, norbs), dtype=numpy.float)
-        vk_list = numpy.zeros((numk, norbs, norbs), dtype=numpy.complex)
-        hk_list = numpy.zeros((numk, 1, norbs, norbs), dtype=numpy.complex)
+        ek_list = numpy.zeros((numk, norbs), dtype=float)
+        vk_list = numpy.zeros((numk, norbs, norbs), dtype=complex)
+        hk_list = numpy.zeros((numk, 1, norbs, norbs), dtype=complex)
         for ik, kpt in enumerate(kpts):
             hk, _ = self.Hk(ikp=ik, kpt=kpt)
             ek, vk = self.eigens(hk=hk)

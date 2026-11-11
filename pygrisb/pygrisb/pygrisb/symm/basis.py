@@ -81,18 +81,18 @@ class symm_basis_pg(symm_basis):
 
 
 class symm_basis_uniform(symm_basis):
-    def __init__(self, n, dtype=np.complex):
+    def __init__(self, n, dtype=complex):
         self.n = n
         self.dtype = dtype
         super().__init__()
 
     def evaluate(self):
-        self.symbol_matrix = np.eye(self.n, dtype=np.int)
+        self.symbol_matrix = np.eye(self.n, dtype=int)
         self.u_trans = np.eye(self.n, dtype=self.dtype)
 
 
 class symm_basis_random(symm_basis):
-    def __init__(self, n, dtype=np.complex):
+    def __init__(self, n, dtype=complex):
         self.n = n
         self.dtype = dtype
         super().__init__()
@@ -103,7 +103,7 @@ class symm_basis_random(symm_basis):
 
 
 class symm_basis_soc(symm_basis):
-    def __init__(self, l, ispin, dtype=np.complex):
+    def __init__(self, l, ispin, dtype=complex):
         self.l = l
         self.ispin = ispin
         self.dtype = dtype

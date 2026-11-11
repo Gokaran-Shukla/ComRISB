@@ -40,5 +40,5 @@ if __name__ =='__main__':
     j = 0.7
 
     v2e = get_v2e(u, j, imp)
-    with h5py.File('EMBED_HAMIL_{}.h5'.format(imp)) as f:
+    with h5py.File('EMBED_HAMIL_{}.h5'.format(imp), 'r+') as f:
         f['/V2E'][...] = v2e.T

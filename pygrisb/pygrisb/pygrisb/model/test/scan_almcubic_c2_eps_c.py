@@ -8,7 +8,7 @@ eps_c_list = numpy.arange(0.0, 2.7, 0.1)
 
 with open("z_epsc_1.txt", "w") as frec:
     for eps_c in eps_c_list:
-        gutz_model_setup(eps_c=eps_c, dtype=numpy.float, delta=0.01, u=0.2)
+        gutz_model_setup(eps_c=eps_c, dtype=float, delta=0.01, u=0.2)
         # mott solution
         # if os.path.isfile("GParam_mott.h5"):
         #     with h5py.File("GParam_mott.h5", "r") as fsrc:

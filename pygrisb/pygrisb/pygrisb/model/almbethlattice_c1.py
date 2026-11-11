@@ -21,7 +21,7 @@ def gutz_model_setup(
         iembeddiag=-3,
         delta=0.01,
         nmesh=5000,
-        dtype=np.complex,
+        dtype=complex,
         ):
     '''Set up Gutzwiller calculations for periodic anderson mode with
     semi-circular DOS for conduction band.
@@ -78,7 +78,7 @@ def gutz_model_setup(
     # list of one-body part of the local Hamiltonians.
     # here the s-orbital is located at zero.
     # always in complex format
-    h1e_list = [np.array([[eps_f]], dtype=np.complex)]
+    h1e_list = [np.array([[eps_f]], dtype=complex)]
 
     # create ``GBareH.h5`` file
     # ensemble is set to 1 for grand canonical system.
@@ -113,7 +113,7 @@ def gutz_model_setup(
             })
     gatms.set_full_symm_adaptive_basis()
     # local single-particle matrix basis.
-    gatms.set_matrix_basis_list(realhemb=(dtype==np.float))
+    gatms.set_matrix_basis_list(realhemb=(dtype==float))
     # set Coulomb matrix, one spin channel for now
     v2e_1 = np.zeros((1,1,1,1), dtype=dtype)
     v2e_1[0,0,0,0] = u

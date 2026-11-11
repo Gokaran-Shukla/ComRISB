@@ -44,7 +44,7 @@ for u, j in zip(u_list, j_list):
     ef_list.append(e_fermi)
 
 
-    print numpy.max(dwt_list)
+    print(numpy.max(dwt_list))
 
 
     with h5py.File('../FeSb2Results.h5', 'r') as f:
@@ -102,4 +102,4 @@ for u, j in zip(u_list, j_list):
 
 
 
-print ef_list
+print(ef_list)

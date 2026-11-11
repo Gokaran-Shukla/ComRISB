@@ -291,7 +291,7 @@ module gmpi
     real(q),allocatable::b(:)
       
     allocate(b(n)); b=0
-    call mpi_reduce(this,a,b,n,mpi_double_precision,mpi_sum,this%master, &
+    call mpi_reduce(a,b,n,mpi_double_precision,mpi_sum,this%master, &
             &this%comm,ierr)
     if(this%myrank.eq.this%master)a=b
     deallocate(b)

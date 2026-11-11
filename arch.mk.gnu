@@ -1,7 +1,8 @@
 # Quantum Mobile v21.06.04
 # https://quantum-mobile.readthedocs.io/en/latest/releases/index.html
 
-compfl = -O2 -w -fbacktrace -ffree-line-length-0
+# gfortran >= 10 rejects the legacy (implicit-interface) MPI/BLAS calls without this flag
+compfl = -O2 -w -fbacktrace -ffree-line-length-0 -fallow-argument-mismatch
 
 PF90 = h5pfc
 F90 = h5pfc

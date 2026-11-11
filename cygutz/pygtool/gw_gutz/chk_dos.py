@@ -1,7 +1,6 @@
 import numpy as np
 import h5py
 from pygrisb.estructure import dos as _dos
-from future_builtins import zip
 
 
 def count_elecn(dos):
@@ -41,7 +40,7 @@ energies = dos.get_energies()
 dos_t = dos.get_dos_t()
 dos_f = dos.get_dos_component(psi_sknf)
 
-print 'num elecn = {}'.format(count_elecn(dos))
+print('num elecn = {}'.format(count_elecn(dos)))
 
 import matplotlib.pyplot as plt
 plt.figure(0)

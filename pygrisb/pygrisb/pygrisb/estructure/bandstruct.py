@@ -54,7 +54,7 @@ def get_estimated_gap(nocc=None):
 
     # if fermi level is not given, check the fermi level
     if nocc is None:
-        with h5py.File('GLog.h5') as f:
+        with h5py.File('GLog.h5', 'r') as f:
             e_fermi = f['/'].attrs['efermi']
 
     with h5py.File('GBands.h5', 'r') as f:
@@ -87,7 +87,7 @@ def get_estimated_gaps(nocc=None):
 
     # if fermi level is not given, check the fermi level
     if nocc is None:
-        with h5py.File('GLog.h5') as f:
+        with h5py.File('GLog.h5', 'r') as f:
             e_fermi = f['/'].attrs['efermi']
 
     with h5py.File('GBands.h5', 'r') as f:

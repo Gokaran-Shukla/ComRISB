@@ -77,7 +77,7 @@ def gutz_model_setup(u=0.0, spindeg=True, num_e=2., iembeddiag=-2):
     num_band_max = 2
 
     # set list of one-body part of the local Hamiltonian (trivial here.)
-    h1e = np.zeros((2, 2), dtype=np.complex)
+    h1e = np.zeros((2, 2), dtype=complex)
     h1e[0, 1] = h1e[1, 0] = t  # important, otherwise moment wrong!
     h1e_list = [h1e for symbol in symbols]
 
@@ -94,9 +94,9 @@ def gutz_model_setup(u=0.0, spindeg=True, num_e=2., iembeddiag=-2):
             "na2_list": [4],
             "iso": 1,
             "ispin": ispin,
-            "db2sab_list": [np.eye(2, dtype=np.complex)],
+            "db2sab_list": [np.eye(2, dtype=complex)],
             "symbol_matrix_list": \
-                    [np.arange(1, 5, dtype=np.int).reshape((2, 2))],
+                    [np.arange(1, 5, dtype=int).reshape((2, 2))],
             "dc_u_avg_list": [0.],
             "dc_j_avg_list": [0.],
             "giembeddiag": iembeddiag,

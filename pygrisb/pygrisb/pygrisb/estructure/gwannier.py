@@ -78,9 +78,9 @@ def get_gloc_in_wannier_basis():
         n1 = rmat.shape[0]
         if n2 > n1:
             # rmat adding identity block
-            rmat = block_diag(rmat, numpy.eye(n2-n1, dtype=numpy.complex))
+            rmat = block_diag(rmat, numpy.eye(n2-n1, dtype=complex))
             # others adding zeros block
-            zeromat = numpy.zeros((n2-n1, n2-n1), numpy.complex)
+            zeromat = numpy.zeros((n2-n1, n2-n1), complex)
             lam = block_diag(lam, zeromat)
             nr = block_diag(nr, zeromat)
             nphy = block_diag(nphy, zeromat)

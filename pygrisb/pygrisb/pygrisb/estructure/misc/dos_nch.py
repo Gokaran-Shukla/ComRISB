@@ -62,7 +62,7 @@ class DOS:
 
         # spin
         for e_kn, psi_kn_w in zip(self.e_skn,psi_skn_w):
-            dos = np.zeros(self.npts, dtype=np.complex)
+            dos = np.zeros(self.npts, dtype=complex)
             # k-point
             for w, e_n, psi_n_w in zip(self.w_k, e_kn, psi_kn_w):
                 # band index
@@ -103,7 +103,7 @@ class DOS:
         dos_list = []
         # spin
         for e_kn, f_kn, psi_ksn in zip(self.e_skn, f_skn, psi_sksn):
-            dos = np.zeros(self.npts, dtype=np.complex)
+            dos = np.zeros(self.npts, dtype=complex)
 
             # k-point
             for e_n1, f_n1, psi_sn1, nb1 in zip(e_kn, f_kn, psi_ksn, bnd_ne):
@@ -155,7 +155,7 @@ class DOS:
         dos_list = []
         # spin
         for e_kn, f_kn, psi_ksn in zip(self.e_skn, f_skn, psi_sksn):
-            dos = np.zeros(self.npts, dtype=np.complex)
+            dos = np.zeros(self.npts, dtype=complex)
 
             # k-point
             for e_n1,f_n1, psi_sn1, nb1 in zip(e_kn, f_kn, psi_ksn, bnd_ne):

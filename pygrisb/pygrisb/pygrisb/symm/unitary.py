@@ -90,7 +90,7 @@ class complx_sph_harm_to_real_harm(basis_trans_l):
     '''
     def evaluate(self):
         dim_m = 2*self.l+1
-        csh2rh = np.zeros((dim_m, dim_m), dtype=np.complex)
+        csh2rh = np.zeros((dim_m, dim_m), dtype=complex)
         # set the orbital indices for the convenience with negative index.
         iy = np.roll(np.arange(dim_m), -self.l)
         for m in range(-self.l,self.l+1):
@@ -118,7 +118,7 @@ class comp_sph_harm_to_relat_harm(basis_trans_l):
     def evaluate(self):
         dim_m = 2*self.l+1
         dim_ms = dim_m*2
-        csh2relh = np.zeros((dim_ms, dim_ms), dtype=np.complex)
+        csh2relh = np.zeros((dim_ms, dim_ms), dtype=complex)
         iy = np.roll(np.arange(dim_m), -self.l)
         # add slow spin index
         iys = {-0.5:iy, 0.5:[iy[i]+dim_m for i in range(dim_m)]}

@@ -8,5 +8,5 @@ for i in range(11):
         continue
     phi = f1['/valence_block_{}/PHI'.format(i)][()].T
     rho = f2['/valence_block_{}/RHO'.format(i)][()].T
-    print numpy.max(numpy.abs(rho - phi.dot(phi.T.conj()))), 'right'
-    print numpy.max(numpy.abs(rho - phi.T.conj().dot(phi))), 'wrong'
+    print(numpy.max(numpy.abs(rho - phi.dot(phi.T.conj()))), 'right')
+    print(numpy.max(numpy.abs(rho - phi.T.conj().dot(phi))), 'wrong')

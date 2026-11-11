@@ -9,7 +9,7 @@ u = 0.00
 
 with open("uzv_1.txt", "w") as frec:
     for t in t_list:
-        gutz_model_setup(u=u, v=.1, t=t, dtype=numpy.float)
+        gutz_model_setup(u=u, v=.1, t=t, dtype=float)
         driver_cygutz(path=os.environ['WIEN_GUTZ_ROOT'],
                 cygtail=get_cygtail())
         with h5py.File("GLog.h5", "r") as f:

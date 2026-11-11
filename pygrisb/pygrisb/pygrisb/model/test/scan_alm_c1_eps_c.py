@@ -11,7 +11,7 @@ with open("z_epsc_1.txt", "w") as frec:
     for eps_c in eps_c_list:
         gutz_model_setup(
                 eps_c=eps_c,
-                dtype=numpy.float,
+                dtype=float,
                 u=0.5,
                 iembeddiag=22,
                 )

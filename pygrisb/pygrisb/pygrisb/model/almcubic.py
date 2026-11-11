@@ -17,7 +17,7 @@ def gutz_model_setup(
         iembeddiag=-3,
         delta=0.01,
         kps_size = (20, 20, 20),
-        dtype=np.complex,
+        dtype=complex,
         ):
     '''Set up Gutzwiller calculations for periodic anderson model
     in simple cubic lattice in grand canonical ensemble.
@@ -129,7 +129,7 @@ def gutz_model_setup(
     v2e_2 = np.asarray(v2e_2, dtype=dtype)
     gatms.update({"v2e_list": [v2e_2]})
     # local single-particle matrix basis.
-    gatms.set_matrix_basis_list(realhemb=(dtype==np.float))
+    gatms.set_matrix_basis_list(realhemb=(dtype==float))
     # spin operator
     samop = am.samop_csh2(0.5)
     s_vec = samop.am_op

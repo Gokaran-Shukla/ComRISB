@@ -8,7 +8,7 @@ eps_c_list = numpy.arange(6.0, 8.0, 0.2)
 
 with open("z_epsc_1.txt", "w") as frec:
     for eps_c in eps_c_list:
-        gutz_model_setup(eps_c=eps_c, dtype=numpy.float, u=0.2)
+        gutz_model_setup(eps_c=eps_c, dtype=float, u=0.2)
         driver_cygutz(path=os.environ['WIEN_GUTZ_ROOT'],
                 cygtail=get_cygtail())
         with h5py.File("GLog.h5", "r") as f:

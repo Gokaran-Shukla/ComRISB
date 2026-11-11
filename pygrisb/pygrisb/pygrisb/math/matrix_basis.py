@@ -6,7 +6,7 @@ class matrix_basis(ABC):
     """
     base class of complete matrix basis set.
     """
-    def __init__(self, symbol_matrix=None, basis=None, dtype=np.complex, \
+    def __init__(self, symbol_matrix=None, basis=None, dtype=complex, \
             btype="hermi"):
         self._symbol_matrix = symbol_matrix
         self._basis = basis
@@ -30,7 +30,7 @@ class dense_matrix_basis(matrix_basis):
     def set_basis_set(self):
         if self._basis is None:
             matrix_basis = []
-            symbol_matrix = np.asarray(self._symbol_matrix, dtype=np.int)
+            symbol_matrix = np.asarray(self._symbol_matrix, dtype=int)
             for element in range(1,symbol_matrix.max()+1):
                 spots = np.argwhere(symbol_matrix == element)
                 num_spots = len(spots)
@@ -57,10 +57,10 @@ class dense_matrix_basis(matrix_basis):
                         matrix[spots[1], spots[0]] = value
                         matrix_basis.append(matrix)
 
-                        if self.dtype in [np.complex, np.complex_]:
+                        if self.dtype in [complex, np.complex128]:
                             value = value * 1.j
                             matrix = np.zeros_like(symbol_matrix,
-                                    dtype=np.complex)
+                                    dtype=complex)
                             matrix[spots[0], spots[1]] = value
                             matrix[spots[1], spots[0]] = -value
                             matrix_basis.append(matrix)

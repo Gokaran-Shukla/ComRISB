@@ -59,7 +59,7 @@ class gparam_atms(gparam):
         super().__init__(kwargs)
 
     def set_default_params1(self):
-        self.dtype = np.complex
+        self.dtype = complex
         self.iso = 1
         self.ispin = 1
         self.giembeddiag = 0
@@ -191,7 +191,7 @@ class gparam_bnds(gparam):
         super().__init__(kwargs)
 
     def set_default_params1(self):
-        self.dtype = np.complex
+        self.dtype = complex
         self.iso = 1
         self.ispin = 1
         self.symnop = 1

@@ -275,3 +275,13 @@ wannier90_2.1/w90chk2chk.x
 wannier90_2.1/wannier90.x
 
 */*/test
+
+# Wannier90 3.1.0 build products
+wannier90_3.1.0/libwannier.a
+wannier90_3.1.0/src/obj/
+wannier90_3.1.0/*.x
+
+# CyGutz executables built in place
+cygutz/src/cygutz/*/cmplx/CyG*
+cygutz/src/cygutz/*/real/CyG*
+cygutz/src/cygutz/GSPCI/*/exe_spci*

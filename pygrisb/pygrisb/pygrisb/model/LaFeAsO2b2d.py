@@ -16,7 +16,7 @@ def gutz_model_setup(
         iembeddiag=-2,
         delta=0.01,
         kps_size = (50, 50, 1),
-        dtype=np.float,
+        dtype=float,
         mu=0,   #1.45
         ensemble=0,
         ):
@@ -107,7 +107,7 @@ def gutz_model_setup(
 
     # set list of one-body part of the local Hamiltonian (trivial here.)
     # always complex
-    h1e_list = [np.array([[0, 0], [0, 0]], dtype=np.complex)
+    h1e_list = [np.array([[0, 0], [0, 0]], dtype=complex)
             for symbol in symbols]
 
     # create ``GBareH.h5`` file
@@ -148,7 +148,7 @@ def gutz_model_setup(
     v2e_2 = np.asarray(v2e_2, dtype=dtype)
     gatms.update({"v2e_list": [v2e_2]})
     # local single-particle matrix basis.
-    gatms.set_matrix_basis_list(realhemb=(dtype==np.float))
+    gatms.set_matrix_basis_list(realhemb=(dtype==float))
     # spin operator
     samop = am.samop_csh2(0.5)
     s_vec = samop.am_op

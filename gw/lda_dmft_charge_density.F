@@ -108,6 +108,12 @@ c$$$        temperature=dmft_temperature
 
 #ifdef USE_HDF5
 
+c     nv holds the hyperslab offsets passed to fread. It was never set
+c     (undefined stack contents): with gfortran 13 every rank except the
+c     master failed to read vw_matrix_new / n_matrix_new and kept zeros,
+c     so the G-RISB density correction was lost on their k-points.
+c     All datasets here are read in full: offsets are zero.
+      nv=0
       call fopen('wannier_den_matrix.dat',fid_f)
       call fread(MPI_COMM_WORLD,dmft_temperature,"temperature",fid_f)
 !      if (maswrk)  write(iun,*)'dmft_temperature',dmft_temperature

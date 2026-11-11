@@ -22,7 +22,7 @@ def get_wannier_data_binary(fname):
         # low energy band indices included in the wannier construction
         include_bands = f.read_ints()
         # list of overlap between band wavefunctions and wannier orbitals
-        wfwannier_list = f.read_reals().view(numpy.complex).reshape(\
+        wfwannier_list = f.read_reals().view(complex).reshape(\
                 (1, nqdiv, num_wann, num_bands)).swapaxes(2, 3)
         # list of band energies
         bnd_es = f.read_reals().reshape((1, nqdiv, num_bands))

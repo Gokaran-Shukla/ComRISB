@@ -14,6 +14,9 @@ import array
 import numpy
 import math
 import pymatgen.symmetry as symmetry
+# current pymatgen does not import submodules implicitly
+import pymatgen.symmetry.analyzer
+import pymatgen.symmetry.bandstructure
 from pymatgen.core import Structure
 
 #

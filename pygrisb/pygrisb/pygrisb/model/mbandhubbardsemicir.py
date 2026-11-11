@@ -80,7 +80,7 @@ def gutz_model_setup(
     # list of one-body part of the local Hamiltonians.
     # here the s-orbital is located at zero.
     # input is always complex
-    h1e_list = [np.zeros((norb, norb), dtype=np.complex)]
+    h1e_list = [np.zeros((norb, norb), dtype=complex)]
 
     # create ``GBareH.h5`` file
     gbndinfo = gp.gparam_bnds(kps_wt,
@@ -97,7 +97,7 @@ def gutz_model_setup(
     gatms = gatoms.cor_structure(symbols=["C"],
             scaled_positions=[[0,0,0]],
             cell=np.identity(3))
-    db2sab = np.zeros((norb2, norb2), dtype=np.complex)
+    db2sab = np.zeros((norb2, norb2), dtype=complex)
     db2sab[:norb, ::2] = db2sab[norb:, 1::2] = np.identity(norb)
 
     gatms.update({
@@ -107,7 +107,7 @@ def gutz_model_setup(
             "iso": 1,
             "ispin": 1,
             "db2sab_list": [db2sab],
-            "symbol_matrix_list": [np.eye(norb2, dtype=np.int)],
+            "symbol_matrix_list": [np.eye(norb2, dtype=int)],
             "dc_u_avg_list": [u],
             "dc_j_avg_list": [j],
             "giembeddiag": iembeddiag,

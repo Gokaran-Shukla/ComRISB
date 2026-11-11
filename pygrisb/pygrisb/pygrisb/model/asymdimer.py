@@ -69,7 +69,7 @@ def gutz_model_setup(u=0.02, v=.1, eps_f=-2., spindeg=True,
     num_band_max = 2
 
     # set list of one-body part of the local Hamiltonian (trivial here.)
-    h1e_list = [np.array([[eps_f]], dtype=np.complex)]
+    h1e_list = [np.array([[eps_f]], dtype=complex)]
 
     # create ``GBareH.h5`` file
     gbndinfo = gp.gparam_bnds(kps_wt, num_e, num_band_max, h1e_list=h1e_list)
@@ -86,7 +86,7 @@ def gutz_model_setup(u=0.02, v=.1, eps_f=-2., spindeg=True,
             "na2_list": [2],
             "iso": 1,
             "ispin": 1,
-            "db2sab_list": [np.eye(1, dtype=np.complex)],
+            "db2sab_list": [np.eye(1, dtype=complex)],
             "symbol_matrix_list": [[[1]]],
             "dc_u_avg_list": [0.],
             "dc_j_avg_list": [0.],
@@ -97,7 +97,7 @@ def gutz_model_setup(u=0.02, v=.1, eps_f=-2., spindeg=True,
             })
     gatms.set_full_symm_adaptive_basis()
     # Coulomb matrix
-    v2e_1 = np.zeros((1,1,1,1), dtype=np.complex)
+    v2e_1 = np.zeros((1,1,1,1), dtype=complex)
     v2e_1[0,0,0,0] = u
     v2e_2 = cm.add_spin_comp_to_coul_mat(v2e_1)
     v2e_2 = cm.apply_a4_unitary_trans(v2e_2, gatms.ps["db2sab_list"][0])

@@ -53,7 +53,7 @@ def if_gwannier(corbs_list,
         hmat_list.append([])
         evals_list.append([])
         psi0b_list.append([])
-        h1e_all.append(np.zeros((nbmax, nbmax), dtype=np.complex))
+        h1e_all.append(np.zeros((nbmax, nbmax), dtype=complex))
         for ik in range(k_range[0], k_range[1]):
             ikl = ik-k_range[0]
             # rescontruct dft hamiltonian matrix
@@ -173,7 +173,7 @@ def get_h1e_list_wannier(gwannier, corbs_list):
     h1e_list = [[]]
     for i, corbs in enumerate(corbs_list):
         norbs = len(corbs)
-        h1e_list[0].append(np.zeros((norbs,norbs), dtype=np.complex))
+        h1e_list[0].append(np.zeros((norbs,norbs), dtype=complex))
         for j1 in range(norbs):
             _j1 = corbs[j1]
             for j2 in range(norbs):
@@ -194,7 +194,7 @@ def get_wann2csh(nbmax, corbs_list):
     '''
     # basis transformation matrix which merges the corelated orbitals
     # to the first places, followed by the uncorrelated orbitals.
-    ubasis = np.zeros((nbmax,nbmax), dtype=np.complex)
+    ubasis = np.zeros((nbmax,nbmax), dtype=complex)
     # the spin-orbital index remapping accordingly.
     orbs_map = []
     for i, corbs in enumerate(corbs_list):
@@ -370,7 +370,7 @@ def wannier_den_matrix_lda_chk(wannier_path="./"):
     # setup trivial wannier_den data.
     wan_den = [[]]
     wfwannier_list = [[]]
-    vmat = np.zeros((nbnd, nwan), dtype=np.complex)
+    vmat = np.zeros((nbnd, nwan), dtype=complex)
     np.fill_diagonal(vmat, 1.0)
     for ik in range(nktot):
         wfwannier_list[-1].append(vmat)

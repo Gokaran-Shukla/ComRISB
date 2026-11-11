@@ -83,7 +83,7 @@ class coulomb_matrix_slater(coulomb_matrix):
         # angular_matrix_element(l, k, m1, m2, m3, m4)
         l = self.l
         nl = l*2+1
-        self._v = np.zeros((nl,nl,nl,nl),dtype=np.float)
+        self._v = np.zeros((nl,nl,nl,nl),dtype=float)
         m_range = range(-self.l, self.l+1)
         for n, f in enumerate(self.slater_integrals):
             k = 2*n
@@ -99,7 +99,7 @@ class coulomb_matrix_slater(coulomb_matrix):
         if l is None:
             # orb must be provided.
             l = "spdf".index(orb)
-        fs = np.zeros(4,dtype=np.float)
+        fs = np.zeros(4,dtype=float)
         fs[0] = u_hubb
         if l == 0:
             pass
@@ -153,7 +153,7 @@ class coulomb_matrix_kanamori(coulomb_matrix):
         return cls(n_orb, u_hubb, j_hund)
 
     def evaluate(self):
-        self._v = np.zeros([self.n]*4, dtype=np.float)
+        self._v = np.zeros([self.n]*4, dtype=float)
         m_range = range(self.n)
         for m, mp in product(m_range, m_range):
             if m == mp:

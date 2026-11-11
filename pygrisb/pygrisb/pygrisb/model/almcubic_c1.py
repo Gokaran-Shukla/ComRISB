@@ -10,7 +10,7 @@ import pygrisb.symm.angular_momentum as am
 
 def gutz_model_setup(u=0.5, v=.4, eta_f=0., eps_c=0., spindeg=True,
         iembeddiag=-3, kps_size = (20, 20, 20),
-        dtype=np.float):
+        dtype=float):
     '''Set up Gutzwiller calculations for periodic anderson model
     in simple cubic lattice in grand canonical ensemble.
 
@@ -82,7 +82,7 @@ def gutz_model_setup(u=0.5, v=.4, eta_f=0., eps_c=0., spindeg=True,
     num_band_max = 2
 
     # set list of one-body part of the local Hamiltonian (trivial here.)
-    h1e_list = [np.array([[eps_f]], dtype=np.complex)
+    h1e_list = [np.array([[eps_f]], dtype=complex)
             for symbol in symbols]
 
     # create ``GBareH.h5`` file
@@ -120,7 +120,7 @@ def gutz_model_setup(u=0.5, v=.4, eta_f=0., eps_c=0., spindeg=True,
     v2e_2 = np.asarray(v2e_2, dtype=dtype)
     gatms.update({"v2e_list": [v2e_2]})
     # local single-particle matrix basis.
-    gatms.set_matrix_basis_list(realhemb=dtype==np.float)
+    gatms.set_matrix_basis_list(realhemb=dtype==float)
     # spin operator
     samop = am.samop_csh2(0.0)
     s_vec = samop.am_op

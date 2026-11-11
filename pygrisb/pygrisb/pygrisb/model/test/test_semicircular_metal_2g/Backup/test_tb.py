@@ -37,7 +37,7 @@ def gutz_model_setup(u=0.0, nmesh=5000, norb=1, tiny=0.0, mu=0):
 
     # GPARAMBANDS.h5
 
-    h1e_list = [np.zeros((norb2, norb2), dtype=np.complex)]
+    h1e_list = [np.zeros((norb2, norb2), dtype=complex)]
     ginput.save_gparambands(kps_wt, num_e, norb, \
             ensemble=1, h1e_list=h1e_list)
 
@@ -49,7 +49,7 @@ def gutz_model_setup(u=0.0, nmesh=5000, norb=1, tiny=0.0, mu=0):
     sigma[1::2, 1::2] = sigma[0::2, 0::2]
 
     # Coulomb matrix
-    v2e = np.zeros((norb2,norb2,norb2,norb2), dtype=np.complex)
+    v2e = np.zeros((norb2,norb2,norb2,norb2), dtype=complex)
     v2e[0,0,0,0] = v2e[0,0,1,1] = v2e[1,1,0,0] = v2e[1,1,1,1] = u
     vdc2_list = np.array([np.zeros((norb2))])
     vdc2_list[0, 0:2] = -u/2 + mu

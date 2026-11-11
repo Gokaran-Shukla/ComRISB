@@ -239,14 +239,17 @@ class tb_model(object):
 
         """
 
-        # processing of special cases for kpts
-        if kpts == 'full':
+        # processing of special cases for kpts.
+        # kpts may be a string or an array of k-points; comparing an array
+        # with a string raises in NumPy >= 2 (it is elementwise now).
+        kpts_key = kpts if isinstance(kpts, str) else None
+        if kpts_key == 'full':
             # full Brillouin zone for 1D case
             k_list = np.array([[0.], [0.5], [1.]])
-        elif kpts == 'fullc':
+        elif kpts_key == 'fullc':
             # centered full Brillouin zone for 1D case
             k_list = np.array([[-0.5], [0.], [0.5]])
-        elif kpts == 'half':
+        elif kpts_key == 'half':
             # half Brillouin zone for 1D case
             k_list = np.array([[0.], [0.5]])
         else:

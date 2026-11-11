@@ -1,7 +1,7 @@
 #i&&&&&&&&&&&&&&&&&&&&&&&&&&&&        UNIX MPICH MPI       &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 include ../arch.mk
 
-wan90_dir = ../wannier90_2.1
+wan90_dir = ../wannier90_3.1.0
 
 comp = $(PF90) $(FPPFLAGS) -c $(compfl)
 link = $(PF90)  $(compfl)

@@ -2,7 +2,7 @@ import numpy
 
 
 def kpoint_plane(fname="k2dvertices.inp"):
-    vertices = numpy.ones([3,6], dtype=numpy.int)
+    vertices = numpy.ones([3,6], dtype=int)
     with open(fname, "r") as f:
         '''
 provide three vertices which defines a 2d plane, e.g.

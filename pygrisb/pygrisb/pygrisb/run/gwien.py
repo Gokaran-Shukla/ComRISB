@@ -151,11 +151,13 @@ def gonestep(
         exec_name,
         mpi,
         updn="",
-        gpath=os.environ['WIEN_GUTZ_ROOT'],
+        gpath=None,
         args=None,
         ):
     '''gwien1, CyGutz and gwien2 steps.
     '''
+    if gpath is None:       # looked up at call time (was evaluated at import time)
+        gpath = os.environ['WIEN_GUTZ_ROOT']
     time_start = time.strftime("%H:%M:%S")
     short_name = exec_name.split("/")[-1]
     with open(':log', 'a') as f:

@@ -11,7 +11,7 @@ csh2rsh = complx_sph_harm_to_real_harm(l=2).u_trans
 csh2t2geg = csh2rsh.copy()
 csh2t2geg[:, 2] = csh2rsh[:, 3]
 csh2t2geg[:, 3] = csh2rsh[:, 2]
-csh2t2geg2 = numpy.zeros([10, 10], dtype=numpy.complex)
+csh2t2geg2 = numpy.zeros([10, 10], dtype=complex)
 csh2t2geg2[:5, ::2] = csh2t2geg2[5:, 1::2] = csh2t2geg
 
 
